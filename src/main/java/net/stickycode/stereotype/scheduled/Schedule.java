@@ -10,23 +10,25 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
-package net.stickycode.stereotype;
+package net.stickycode.stereotype.scheduled;
 
+import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-
 /**
- * This stereotype marks a component as being a <a href="http://martinfowler.com/eaaCatalog/plugin.html">plugin</a>.
- * 
- * Note that this is not meta annotated with {@link StickyComponent} as components are singular where as plugins are not.
- * 
- * It could be used to carry out context validation to ensure the pattern is being used appropriately.
+ * See {@link Scheduled}
  */
-@Target(ElementType.TYPE)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface StickyPlugin {
+@Documented
+@Deprecated
+public @interface Schedule {
 
+  /**
+   * Describe the scheduling such that when configuration of it is required it makes sense
+   */
+  String value() default "";
 }
